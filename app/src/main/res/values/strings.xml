@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Belgariad Chat</string>
+    <string name="join">Join</string>
+    <string name="leave">Leave</string>
+</resources>

@@ -1,0 +1,4 @@
+#Sat Nov 23 12:52:19 PST 2019
+base.0=/Users/innis/Projects/LocalNetworkingAndroidApp/app/build/intermediates/dex/debug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
