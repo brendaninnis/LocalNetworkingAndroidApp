@@ -2,9 +2,13 @@ package com.example.localnetworkingandroidapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Layout
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.AlignmentSpan
 import android.view.MenuItem
 import android.view.Menu
-
+import android.widget.TextView
 
 
 class MainActivity : AppCompatActivity() {
@@ -26,8 +30,15 @@ class MainActivity : AppCompatActivity() {
         R.id.action_join -> {
             if (joined) {
                 item.title = getString(R.string.join)
+
+                findViewById<TextView>(R.id.main_activity_textview).text = ""
             } else {
                 item.title = getString(R.string.leave)
+
+                val string = getString(R.string.connection_server_message)
+                val spannable = SpannableString(string)
+                spannable.setSpan(AlignmentSpan.Standard(Layout.Alignment.ALIGN_CENTER), 0, string.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                findViewById<TextView>(R.id.main_activity_textview).text = spannable
             }
             joined = !joined
             true
