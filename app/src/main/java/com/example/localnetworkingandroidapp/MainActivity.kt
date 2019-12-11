@@ -25,6 +25,7 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 import java.io.PrintWriter
+import java.lang.IllegalArgumentException
 import java.net.SocketException
 import java.net.UnknownHostException
 import java.util.*
@@ -40,6 +41,7 @@ class MainActivity : AppCompatActivity() {
 
     var joined = false
     var connected = false
+    var hostAfterHandler: Handler? = null
     var host = false
 
     var serverSocket: ServerSocket? = null
@@ -125,6 +127,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onServiceFound(service: NsdServiceInfo) {
             Log.d(TAG, "Service found ${service.serviceName}")
+            hostAfterHandler?.removeCallbacksAndMessages(null)
 
             // A service was found! Do something with it.
             if (service.serviceName.contains("BelgariadChat")) {
@@ -231,7 +234,8 @@ class MainActivity : AppCompatActivity() {
                 item.title = getString(R.string.join)
 
                 if (host) stopHosting() else {
-                    nsdManager.stopServiceDiscovery(discoveryListener)
+                    stopSearching()
+                    hostAfterHandler?.removeCallbacksAndMessages(null)
                     socket?.close()
                     socket = null
                 }
@@ -252,11 +256,10 @@ class MainActivity : AppCompatActivity() {
                 startSearching()
 
                 // After 3 seconds, if no service has been found, start one
-                Handler().postDelayed({
-                    if (!connected) {
-                        stopSearching()
-                        startHosting()
-                    }
+                hostAfterHandler = Handler()
+                hostAfterHandler?.postDelayed({
+                    stopSearching()
+                    startHosting()
                 }, 3000)
             }
             joined = !joined
@@ -324,7 +327,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun stopSearching() {
-        nsdManager.stopServiceDiscovery(discoveryListener)
+        try {
+            nsdManager.stopServiceDiscovery(discoveryListener)
+        } catch (e: IllegalArgumentException) {
+            Log.i("nsdManager", "discoveryListener not registered")
+        }
     }
 
     private fun startHosting() {
