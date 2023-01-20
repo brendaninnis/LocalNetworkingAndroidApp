@@ -1,4 +1,4 @@
-package com.example.localnetworkingandroidapp
+package com.mobilegame.localnetworkingandroidapp
 
 import org.junit.Test
 

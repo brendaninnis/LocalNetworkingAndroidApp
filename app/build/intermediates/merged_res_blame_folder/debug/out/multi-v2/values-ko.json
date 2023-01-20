@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mobilegame.localnetworkingandroidapp-mergeDebugResources-33:/values-ko/values-ko.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\2157ea49cdc3c5b2f06f3fe4a50dab4f\\transformed\\core-1.7.0\\res\\values-ko\\values-ko.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "14",
+                        "startColumns": "4",
+                        "startOffsets": "1036",
+                        "endColumns": "100",
+                        "endOffsets": "1132"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\8d5d3970b916db844f7971374d92a7dd\\transformed\\ui-1.1.1\\res\\values-ko\\values-ko.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,184,260,348,438,518,593,682,761,840,904,968,1036,1100",
+                        "endColumns": "78,75,87,89,79,74,88,78,78,63,63,67,63,113",
+                        "endOffsets": "179,255,343,433,513,588,677,756,835,899,963,1031,1095,1209"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,184,260,348,438,518,593,682,761,840,904,968,1137,1201",
+                        "endColumns": "78,75,87,89,79,74,88,78,78,63,63,67,63,113",
+                        "endOffsets": "179,255,343,433,513,588,677,756,835,899,963,1031,1196,1310"
+                    }
+                }
+            ]
+        }
+    ]
+}

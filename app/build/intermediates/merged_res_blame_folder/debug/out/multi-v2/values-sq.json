@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mobilegame.localnetworkingandroidapp-mergeDebugResources-33:/values-sq/values-sq.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\8d5d3970b916db844f7971374d92a7dd\\transformed\\ui-1.1.1\\res\\values-sq\\values-sq.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,200,283,382,484,580,661,763,855,945,1014,1081,1154,1220",
+                        "endColumns": "94,82,98,101,95,80,101,91,89,68,66,72,65,120",
+                        "endOffsets": "195,278,377,479,575,656,758,850,940,1009,1076,1149,1215,1336"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,200,283,382,484,580,661,763,855,945,1014,1081,1255,1321",
+                        "endColumns": "94,82,98,101,95,80,101,91,89,68,66,72,65,120",
+                        "endOffsets": "195,278,377,479,575,656,758,850,940,1009,1076,1149,1316,1437"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\2157ea49cdc3c5b2f06f3fe4a50dab4f\\transformed\\core-1.7.0\\res\\values-sq\\values-sq.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "14",
+                        "startColumns": "4",
+                        "startOffsets": "1154",
+                        "endColumns": "100",
+                        "endOffsets": "1250"
+                    }
+                }
+            ]
+        }
+    ]
+}

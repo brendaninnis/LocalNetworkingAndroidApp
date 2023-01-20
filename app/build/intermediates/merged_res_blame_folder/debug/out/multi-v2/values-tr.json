@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mobilegame.localnetworkingandroidapp-mergeDebugResources-33:/values-tr/values-tr.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\2157ea49cdc3c5b2f06f3fe4a50dab4f\\transformed\\core-1.7.0\\res\\values-tr\\values-tr.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "14",
+                        "startColumns": "4",
+                        "startOffsets": "1126",
+                        "endColumns": "100",
+                        "endOffsets": "1222"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\8d5d3970b916db844f7971374d92a7dd\\transformed\\ui-1.1.1\\res\\values-tr\\values-tr.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,198,282,377,477,561,644,749,837,921,989,1055,1126,1194",
+                        "endColumns": "92,83,94,99,83,82,104,87,83,67,65,70,67,117",
+                        "endOffsets": "193,277,372,472,556,639,744,832,916,984,1050,1121,1189,1307"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,198,282,377,477,561,644,749,837,921,989,1055,1227,1295",
+                        "endColumns": "92,83,94,99,83,82,104,87,83,67,65,70,67,117",
+                        "endOffsets": "193,277,372,472,556,639,744,832,916,984,1050,1121,1290,1408"
+                    }
+                }
+            ]
+        }
+    ]
+}

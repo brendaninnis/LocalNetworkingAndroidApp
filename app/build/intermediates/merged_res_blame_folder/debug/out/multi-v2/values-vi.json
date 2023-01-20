@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mobilegame.localnetworkingandroidapp-mergeDebugResources-33:/values-vi/values-vi.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\8d5d3970b916db844f7971374d92a7dd\\transformed\\ui-1.1.1\\res\\values-vi\\values-vi.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,151,237,343,443,535,620,730,824,905,975,1045,1117",
+                        "endColumns": "95,85,105,99,91,84,109,93,80,69,69,71,65",
+                        "endOffsets": "146,232,338,438,530,615,725,819,900,970,1040,1112,1178"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,15",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,151,237,343,443,535,620,730,824,905,975,1045,1218",
+                        "endColumns": "95,85,105,99,91,84,109,93,80,69,69,71,65",
+                        "endOffsets": "146,232,338,438,530,615,725,819,900,970,1040,1112,1279"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\2157ea49cdc3c5b2f06f3fe4a50dab4f\\transformed\\core-1.7.0\\res\\values-vi\\values-vi.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "14",
+                        "startColumns": "4",
+                        "startOffsets": "1117",
+                        "endColumns": "100",
+                        "endOffsets": "1213"
+                    }
+                }
+            ]
+        }
+    ]
+}
