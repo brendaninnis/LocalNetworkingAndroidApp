@@ -24,7 +24,8 @@
             android:name="com.mobilegame.localnetworkingandroidapp.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.LocalNetworkingAndroidApp" >
+            android:theme="@style/Theme.LocalNetworkingAndroidApp"
+            android:windowSoftInputMode="adjustResize" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
