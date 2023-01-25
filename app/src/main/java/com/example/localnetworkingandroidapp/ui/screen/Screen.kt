@@ -66,7 +66,7 @@ fun Screen(vm: ScreenViewModel) {
     }
 
     val textInput by remember { vm.textInput }.collectAsState()
-    val enableBar by remember { vm.bottomBarEnable }.collectAsState()
+    val enableBar by remember { WifiConnectionState.bottomBarEnable }.collectAsState()
 
     ConstraintLayout(vm.constraints, Modifier.fillMaxSize()) {
         Box(

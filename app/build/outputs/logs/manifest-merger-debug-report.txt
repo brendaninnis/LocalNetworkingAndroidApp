@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
+ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
 MERGED from [androidx.constraintlayout:constraintlayout-compose:1.0.1] C:\Users\valen\.gradle\caches\transforms-3\be7da8443d2d1f8f517524f4cfa9ea80\transformed\constraintlayout-compose-1.0.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:17:1-30:12
 MERGED from [androidx.activity:activity-compose:1.3.1] C:\Users\valen\.gradle\caches\transforms-3\f8fffc2454ed4900ab3e777ad1be349c\transformed\activity-compose-1.3.1\AndroidManifest.xml:17:1-24:12
@@ -44,27 +44,31 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\valen\.gradle\cach
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.3.1] C:\Users\valen\.gradle\caches\transforms-3\2613d72639618055e5f0b853c3c1719f\transformed\lifecycle-viewmodel-2.3.1\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.tracing:tracing:1.0.0] C:\Users\valen\.gradle\caches\transforms-3\bb3496ae16cea282d522be0f7dbcf438\transformed\tracing-1.0.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.annotation:annotation-experimental:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\601b00035553dc5cd715343410d12688\transformed\annotation-experimental-1.1.0\AndroidManifest.xml:17:1-24:12
-INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
-INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
+INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
 	package
 		INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:3:5-51
 	android:versionCode
 		INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-33:12
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:1-35:12
 		INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:5:5-67
+	android:name
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:5:5-31:19
+ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:7:5-33:19
 MERGED from [androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:24:5-28:19
 MERGED from [androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:24:5-28:19
 MERGED from [androidx.compose.ui:ui-test-manifest:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\b44f2e4f1d45b4060c6ebe524b35bff6\transformed\ui-test-manifest-1.1.1\AndroidManifest.xml:24:5-28:19
@@ -80,51 +84,51 @@ MERGED from [androidx.startup:startup-runtime:1.0.0] C:\Users\valen\.gradle\cach
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.7.0] C:\Users\valen\.gradle\caches\transforms-3\2157ea49cdc3c5b2f06f3fe4a50dab4f\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:14:9-35
 	android:label
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:12:9-41
 	android:fullBackupContent
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:8:9-54
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:10:9-54
 	android:roundIcon
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:13:9-54
 	tools:targetApi
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:14:9-29
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:16:9-29
 	android:icon
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:11:9-43
 	android:allowBackup
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:6:9-35
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:8:9-35
 	android:theme
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:13:9-63
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:15:9-63
 	android:dataExtractionRules
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:7:9-65
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:9:9-65
 activity#com.mobilegame.localnetworkingandroidapp.MainActivity
-ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:15:9-30:20
+ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:17:9-32:20
 	android:label
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:18:13-45
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:20:13-45
 	android:windowSoftInputMode
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:19:13-55
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:21:13-55
 	android:exported
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:17:13-36
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:19:13-36
 	android:theme
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:20:13-67
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:22:13-67
 	android:name
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:16:13-41
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:18:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:21:13-25:29
+ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:23:13-27:29
 action#android.intent.action.MAIN
-ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:22:17-69
+ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:24:17-69
 	android:name
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:22:25-66
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:24:25-66
 category#android.intent.category.LAUNCHER
-ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:24:17-77
+ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:26:17-77
 	android:name
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:24:27-74
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:26:27-74
 meta-data#android.app.lib_name
-ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:27:13-29:36
+ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:29:13-31:36
 	android:value
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:29:17-33
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:31:17-33
 	android:name
-		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:28:17-52
+		ADDED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:30:17-52
 uses-sdk
 INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml

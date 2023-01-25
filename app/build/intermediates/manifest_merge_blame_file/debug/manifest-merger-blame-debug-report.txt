@@ -10,106 +10,110 @@
 9        android:targetSdkVersion="32" />
 9-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml
 10
-11    <application
-11-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:5:5-31:19
-12        android:allowBackup="true"
-12-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:6:9-35
-13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-13-->[androidx.core:core:1.7.0] C:\Users\valen\.gradle\caches\transforms-3\2157ea49cdc3c5b2f06f3fe4a50dab4f\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
-14        android:dataExtractionRules="@xml/data_extraction_rules"
-14-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:7:9-65
-15        android:debuggable="true"
-16        android:fullBackupContent="@xml/backup_rules"
-16-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:8:9-54
-17        android:icon="@mipmap/ic_launcher"
-17-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:9:9-43
-18        android:label="@string/app_name"
-18-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:10:9-41
-19        android:roundIcon="@mipmap/ic_launcher_round"
-19-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:11:9-54
-20        android:supportsRtl="true"
-20-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:12:9-35
-21        android:testOnly="true"
-22        android:theme="@style/Theme.LocalNetworkingAndroidApp" >
-22-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:13:9-63
-23        <activity
-23-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:15:9-30:20
-24            android:name="com.mobilegame.localnetworkingandroidapp.MainActivity"
-24-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:16:13-41
-25            android:exported="true"
-25-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:17:13-36
-26            android:label="@string/app_name"
-26-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:18:13-45
-27            android:theme="@style/Theme.LocalNetworkingAndroidApp"
-27-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:20:13-67
-28            android:windowSoftInputMode="adjustResize" >
-28-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:19:13-55
-29            <intent-filter>
-29-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:21:13-25:29
-30                <action android:name="android.intent.action.MAIN" />
-30-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:22:17-69
-30-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:22:25-66
-31
-32                <category android:name="android.intent.category.LAUNCHER" />
-32-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:24:17-77
-32-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:24:27-74
-33            </intent-filter>
-34
-35            <meta-data
-35-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:27:13-29:36
-36                android:name="android.app.lib_name"
-36-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:28:17-52
-37                android:value="" />
-37-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:29:17-33
-38        </activity>
-39        <activity
-39-->[androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:25:9-27:39
-40            android:name="androidx.compose.ui.tooling.PreviewActivity"
-40-->[androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:26:13-71
-41            android:exported="true" />
-41-->[androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:27:13-36
-42        <activity
-42-->[androidx.compose.ui:ui-test-manifest:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\b44f2e4f1d45b4060c6ebe524b35bff6\transformed\ui-test-manifest-1.1.1\AndroidManifest.xml:25:9-27:39
-43            android:name="androidx.activity.ComponentActivity"
-43-->[androidx.compose.ui:ui-test-manifest:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\b44f2e4f1d45b4060c6ebe524b35bff6\transformed\ui-test-manifest-1.1.1\AndroidManifest.xml:26:13-63
-44            android:exported="true" />
-44-->[androidx.compose.ui:ui-test-manifest:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\b44f2e4f1d45b4060c6ebe524b35bff6\transformed\ui-test-manifest-1.1.1\AndroidManifest.xml:27:13-36
-45
-46        <provider
-46-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:26:9-34:20
-47            android:name="androidx.startup.InitializationProvider"
-47-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:27:13-67
-48            android:authorities="com.mobilegame.localnetworkingandroidapp.androidx-startup"
-48-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:28:13-68
-49            android:exported="false" >
-49-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:29:13-37
-50            <meta-data
-50-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:31:13-33:52
-51                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-51-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:32:17-85
-52                android:value="androidx.startup" />
-52-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:33:17-49
-53        </provider>
-54
-55        <receiver
-55-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:36:9-45:20
-56            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-56-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:37:13-76
-57            android:directBootAware="false"
-57-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:38:13-44
-58            android:enabled="true"
-58-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:39:13-35
-59            android:exported="true"
-59-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:40:13-36
-60            android:permission="android.permission.DUMP" >
-60-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:41:13-57
-61            <intent-filter>
-61-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:42:13-44:29
-62                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-62-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:43:17-91
-62-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:43:25-88
-63            </intent-filter>
-64        </receiver>
-65    </application>
-66
-67</manifest>
+11    <uses-permission android:name="android.permission.INTERNET" />
+11-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:5:5-67
+11-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:5:22-64
+12
+13    <application
+13-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:7:5-33:19
+14        android:allowBackup="true"
+14-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:8:9-35
+15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+15-->[androidx.core:core:1.7.0] C:\Users\valen\.gradle\caches\transforms-3\2157ea49cdc3c5b2f06f3fe4a50dab4f\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
+16        android:dataExtractionRules="@xml/data_extraction_rules"
+16-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:9:9-65
+17        android:debuggable="true"
+18        android:fullBackupContent="@xml/backup_rules"
+18-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:10:9-54
+19        android:icon="@mipmap/ic_launcher"
+19-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:11:9-43
+20        android:label="@string/app_name"
+20-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:12:9-41
+21        android:roundIcon="@mipmap/ic_launcher_round"
+21-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:13:9-54
+22        android:supportsRtl="true"
+22-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:14:9-35
+23        android:testOnly="true"
+24        android:theme="@style/Theme.LocalNetworkingAndroidApp" >
+24-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:15:9-63
+25        <activity
+25-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:17:9-32:20
+26            android:name="com.mobilegame.localnetworkingandroidapp.MainActivity"
+26-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:18:13-41
+27            android:exported="true"
+27-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:19:13-36
+28            android:label="@string/app_name"
+28-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:20:13-45
+29            android:theme="@style/Theme.LocalNetworkingAndroidApp"
+29-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:22:13-67
+30            android:windowSoftInputMode="adjustResize" >
+30-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:21:13-55
+31            <intent-filter>
+31-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:23:13-27:29
+32                <action android:name="android.intent.action.MAIN" />
+32-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:24:17-69
+32-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:24:25-66
+33
+34                <category android:name="android.intent.category.LAUNCHER" />
+34-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:26:17-77
+34-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:26:27-74
+35            </intent-filter>
+36
+37            <meta-data
+37-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:29:13-31:36
+38                android:name="android.app.lib_name"
+38-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:30:17-52
+39                android:value="" />
+39-->D:\Android\LocalNetworkingAndroidApp\app\src\main\AndroidManifest.xml:31:17-33
+40        </activity>
+41        <activity
+41-->[androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:25:9-27:39
+42            android:name="androidx.compose.ui.tooling.PreviewActivity"
+42-->[androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:26:13-71
+43            android:exported="true" />
+43-->[androidx.compose.ui:ui-tooling:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\5203297084e57ffb9f94571a20ff8f2b\transformed\ui-tooling-1.1.1\AndroidManifest.xml:27:13-36
+44        <activity
+44-->[androidx.compose.ui:ui-test-manifest:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\b44f2e4f1d45b4060c6ebe524b35bff6\transformed\ui-test-manifest-1.1.1\AndroidManifest.xml:25:9-27:39
+45            android:name="androidx.activity.ComponentActivity"
+45-->[androidx.compose.ui:ui-test-manifest:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\b44f2e4f1d45b4060c6ebe524b35bff6\transformed\ui-test-manifest-1.1.1\AndroidManifest.xml:26:13-63
+46            android:exported="true" />
+46-->[androidx.compose.ui:ui-test-manifest:1.1.1] C:\Users\valen\.gradle\caches\transforms-3\b44f2e4f1d45b4060c6ebe524b35bff6\transformed\ui-test-manifest-1.1.1\AndroidManifest.xml:27:13-36
+47
+48        <provider
+48-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:26:9-34:20
+49            android:name="androidx.startup.InitializationProvider"
+49-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:27:13-67
+50            android:authorities="com.mobilegame.localnetworkingandroidapp.androidx-startup"
+50-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:28:13-68
+51            android:exported="false" >
+51-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:29:13-37
+52            <meta-data
+52-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:31:13-33:52
+53                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+53-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:32:17-85
+54                android:value="androidx.startup" />
+54-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:33:17-49
+55        </provider>
+56
+57        <receiver
+57-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:36:9-45:20
+58            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+58-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:37:13-76
+59            android:directBootAware="false"
+59-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:38:13-44
+60            android:enabled="true"
+60-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:39:13-35
+61            android:exported="true"
+61-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:40:13-36
+62            android:permission="android.permission.DUMP" >
+62-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:41:13-57
+63            <intent-filter>
+63-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:42:13-44:29
+64                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+64-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:43:17-91
+64-->[androidx.profileinstaller:profileinstaller:1.1.0] C:\Users\valen\.gradle\caches\transforms-3\a1e7f5a712ef2321f6d771302bda0d55\transformed\profileinstaller-1.1.0\AndroidManifest.xml:43:25-88
+65            </intent-filter>
+66        </receiver>
+67    </application>
+68
+69</manifest>
