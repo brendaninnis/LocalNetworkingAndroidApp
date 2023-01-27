@@ -1,7 +1,9 @@
 package com.example.localnetworkingandroidapp.data.channel
 
 import android.util.Log
-import com.example.localnetworkingandroidapp.data.channel.ChannelService
+import com.example.localnetworkingandroidapp.data.Message
+import com.example.localnetworkingandroidapp.model.CanonicalThread
+import com.example.localnetworkingandroidapp.model.Names
 import com.example.localnetworkingandroidapp.model.WifiConnectionState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -10,11 +12,15 @@ import java.io.IOException
 import java.io.InputStreamReader
 import java.net.Socket
 
-internal class ChannelToServerImplementation(private val socket: Socket): ChannelService {
+internal class ChannelToServerImplementation(
+    private val socket: Socket,
+    private val canonicalThread: CanonicalThread
+): ChannelService {
     private var isOpen = false
+    val TAG = "ChannelToServer"
 
     private suspend fun read() = withContext(Dispatchers.IO) {
-        val TAG = "ServerReader"
+        Log.e(TAG, "read")
         var line: String?
         val reader: BufferedReader
 
@@ -39,16 +45,14 @@ internal class ChannelToServerImplementation(private val socket: Socket): Channe
 
                 Log.d(TAG, "Read line $line")
 
-//                val message = Message.fromJson(line)
+                val message = Message.fromJson(line)
 
-//                if (message.sender == Message.SERVER_NAME_SENDER) {
-//                    myName = message.message
-//                    continue
-//                }
+                if (message.sender == Message.SERVER_NAME_SENDER) {
+                    Names.deviceName = message.text
+                    continue
+                }
 
-//                runOnUiThread {
-//                    addMessage(message, false)
-//                }
+                canonicalThread.addMessage(message)
             } catch (e: IOException) {
                 WifiConnectionState.serverDisconnection()
                 return@withContext
@@ -57,6 +61,7 @@ internal class ChannelToServerImplementation(private val socket: Socket): Channe
     }
 
     override suspend fun open() {
+        Log.e(TAG, "open")
         withContext(Dispatchers.IO) {
             isOpen = true
             read()
@@ -64,5 +69,6 @@ internal class ChannelToServerImplementation(private val socket: Socket): Channe
     }
 
     override suspend fun close() {
+        isOpen = false
     }
 }

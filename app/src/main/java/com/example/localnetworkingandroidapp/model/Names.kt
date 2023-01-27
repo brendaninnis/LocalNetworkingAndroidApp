@@ -1,6 +1,6 @@
 package com.example.localnetworkingandroidapp.model
 
-class Names {
+object Names {
     val originalListNames = listOf(
         "Belgarion",
         "Ce'Nedra",
@@ -18,9 +18,15 @@ class Names {
         "Adara",
         "Barak"
     )
-    val availableNames: MutableList<String> = originalListNames.toMutableList()
-    var myName: String = ""
-    fun findAName() {
-        if (myName.isEmpty()) { myName = availableNames.random() }
+    var availableNames: MutableList<String> = originalListNames.toMutableList()
+    var deviceName: String = ""
+    fun getNewName(): String {
+        val newName = availableNames.random()
+        availableNames.remove(newName)
+        return newName
+    }
+    fun reset() {
+        deviceName = ""
+        availableNames = originalListNames.toMutableList()
     }
 }

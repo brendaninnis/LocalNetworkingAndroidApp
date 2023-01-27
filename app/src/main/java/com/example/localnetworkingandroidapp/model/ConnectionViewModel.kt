@@ -7,20 +7,28 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.localnetworkingandroidapp.data.channel.ChannelService
 import com.example.localnetworkingandroidapp.data.Client
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.example.localnetworkingandroidapp.data.Message
+import com.example.localnetworkingandroidapp.data.Message.Companion.MESSAGE_TERMINATOR
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.changeBottomBarStateTo
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.channelToServer
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.connectedClients
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.nsdManager
+import kotlinx.coroutines.*
 import java.io.IOException
 import java.io.PrintWriter
+import java.lang.IllegalArgumentException
 import java.net.ServerSocket
 import java.net.SocketException
+import java.util.*
 
 class ConnectionViewModel(
-    val listeners: Listeners,
+    private val listeners: Listeners,
+    private val canonicalThread: CanonicalThread,
 ): ViewModel() {
     private val TAG = "ConnectionVM"
     private lateinit var serviceInfo: NsdServiceInfo
-//    var channel: ChannelService? = null
+    var serverSocket: ServerSocket? = null
+    fun isHosting(): Boolean = serverSocket?.let { true } ?: false
 
     fun start() {
         viewModelScope.launch(Dispatchers.IO) {
@@ -28,93 +36,114 @@ class ConnectionViewModel(
             // Browse for existing services
             startSearching()
             delay(3000L)
+            stopSearching()
             if (WifiConnectionState.notConnected()) {
                 Log.i(TAG, "connection not found")
                 startHosting()
+            } else {
+                startListenServer()
             }
         }
     }
-    private suspend fun startSearching() {
-//        WifiConnectionState.nsdManager.discoverServices("_LocalNetworkingApp._tcp", NsdManager.PROTOCOL_DNS_SD, listeners.discoveryListener)
-        WifiConnectionState.nsdManager.discoverServices("_LocalNetworkingApp._tcp", NsdManager.PROTOCOL_DNS_SD, listeners.getDiscoveryListener())
+
+    private suspend fun startListenServer() {
+        Log.e(TAG, "startReading")
+        channelToServer = ChannelService.createChannelToServer(WifiConnectionState.socket!!, canonicalThread)
+        channelToServer?.open()
     }
+
+    private fun startSearching() {
+        nsdManager.discoverServices(
+            "_LocalNetworkingApp._tcp",
+            NsdManager.PROTOCOL_DNS_SD,
+            listeners.discoveryListener
+//            listeners.getADiscoveryListener()
+        )
+    }
+
     private suspend fun startHosting() {
-        Log.i(TAG, "startHosting")
+//        Names.deviceName = Names.getNewName()
+        Log.e(TAG, "startHosting as ${Names.deviceName}")
 
-        createListenSocket()
         // Create a listen socket
-//        var localPort: Int
-//        WifiConnectionState.serverSocket = ServerSocket(0).also { socket ->
-//             Store the chosen port.
-//            localPort = socket.localPort
-//        }
-//        Log.i(TAG, "server socket localPort $localPort")
-//        registerService(localPort)
-        WifiConnectionState.serverSocket?.let { registerService(it.localPort) }
-//        registerService(WifiConnectionState.serverSocket.localPort)
-        viewModelScope.launch(Dispatchers.IO) {
-            Log.i(TAG, "loop on isHosting")
-            while (WifiConnectionState.isHosting()) {
-                try {
-                    WifiConnectionState.serverSocket?.accept()?.let {
-                        WifiConnectionState.names.findAName()
-                        Log.d("ServerSocket", "accepted client")
-                        // Give the client their name
-                        val writer: PrintWriter
+        createListenSocket()
+        serverSocket?.let { _serverSocket ->
+            registerService(_serverSocket.localPort)
 
-                        try { writer = PrintWriter(it.getOutputStream()) }
-                        catch (e: IOException) {
-                            Log.w("ServerSocket", "Failed to create writer for $it")
-                            return@let
+            val hostName = Names.getNewName()
+            Names.deviceName = hostName
+            val startMessage = Message(Message.SERVER_MSG_SENDER, "$hostName has started the chat", Date().time)
+            canonicalThread.addMessage(startMessage)
+
+            //Listen for new Client
+            viewModelScope.launch(Dispatchers.IO) {
+                Log.i(TAG, "loop on isHosting")
+                while ( isHosting() ) {
+                    try {
+                        _serverSocket.accept()?.let {
+                            // Give the client their name
+                            Log.w(TAG, "accept new client ${it.inetAddress}")
+                            val name = Names.getNewName()
+                            val writer: PrintWriter
+
+                            try { writer = PrintWriter(it.getOutputStream()) }
+                            catch (e: IOException) {
+                                Log.w(TAG, "Failed to create writer for $it")
+                                return@let
+                            }
+
+                            val newClient = Client(it, name, writer)
+                            Log.e(TAG, "accepted client ${newClient.name}${newClient.socket.inetAddress}")
+                            connectedClients.add(newClient)
+
+                            // Send a system message attributing client device name
+                            val nameMessage = Message(Message.SERVER_NAME_SENDER, name, Date().time)
+                            writer.print(nameMessage.toJson() + Message.MESSAGE_TERMINATOR)
+                            writer.flush()
+                            // Send a system message alerting that a client has joined
+
+                            async {
+
+                                val joiningMessage =
+                                    Message(Message.SERVER_MSG_SENDER, "$name has joined", Date().time)
+                                connectedClients.forEach {
+                                    if (it != newClient) {
+                                        it.writer.print(joiningMessage.toJson() + Message.MESSAGE_TERMINATOR)
+                                        it.writer.flush()
+                                    }
+                                }
+                                canonicalThread.addMessage(joiningMessage)
+//                            addMessage(joiningMessage)
+//                            sendMessageToClients(joiningMessage)
+
+                                // Send the client the cannonical thread
+                                var messages = ""
+                                canonicalThread.messageList.value.forEach {
+                                    messages += it.toJson() + MESSAGE_TERMINATOR
+                                }
+                                writer.print(messages)
+                                writer.flush()
+                            }
+
+                            // Start reading messages
+                            val aside = async { ChannelService.createChannelToClient(newClient, connectedClients, canonicalThread).open() }
                         }
-
-                        val client = Client(it, WifiConnectionState.names.myName, writer)
-                        WifiConnectionState.connectedClients.add(client)
-
-                        // Start reading messages
-//                        Thread(ClientReader(client)).start()
-                        WifiConnectionState.channelToClient ?: let {
-                            WifiConnectionState.channelToServer = ChannelService.createChannelToClient(client)
-                        }
-                        WifiConnectionState.channelToClient?.open()
+                    } catch (e: SocketException) {
+                        break
                     }
-                } catch (e: SocketException) {
-                    break
                 }
             }
 
-            // Create the NsdServiceInfo object, and populate it.
-//            val serviceInfo = NsdServiceInfo().apply {
-//                // The name is subject to change based on conflicts
-//                // with other services advertised on the same network.
-//                serviceName = "BelgariadChat"
-//                serviceType = "_LocalNetworkingApp._tcp"
-////            setPort(port)
-//                setPort(localPort)
-////                setPort(WifiConnectionState.serverSocket)
-//            }
+            // Enable chat
+            changeBottomBarStateTo(true)
         }
-
-        // Reset the text view
-//        main_activity_textview.text = ""
-
-//         Add a system message
-//        val message = Message(Message.SERVER_MSG_SENDER, "$myName has started the chat", Date().time)
-//        addMessage(message, false)
-
-        // Enable chat
-        WifiConnectionState.changeBottomBarStateTo(true)
-
-        // Initialize cannonical thread
-//        cannonicalThread = Collections.synchronizedList(ArrayList<Message>()).apply {
-//            add(message)
-//        }
     }
+
 
     private fun createListenSocket() {
         Log.i(TAG, "createListenSocket")
         var localPort: Int
-        WifiConnectionState.serverSocket = ServerSocket(0).also { socket ->
+        serverSocket = ServerSocket(0).also { socket ->
             // Store the chosen port.
             localPort = socket.localPort
         }
@@ -132,6 +161,38 @@ class ConnectionViewModel(
             setPort(port)
         }
         // Register the service for discovery
-        WifiConnectionState.nsdManager.registerService(serviceInfo, NsdManager.PROTOCOL_DNS_SD, listeners.registrationListener)
+        nsdManager.registerService(serviceInfo, NsdManager.PROTOCOL_DNS_SD, listeners.registrationListener)
+    }
+
+    fun stopSearching() {
+        try {
+//            nsdManager.stopServiceDiscovery(listeners.getADiscoveryListener())
+            nsdManager.stopServiceDiscovery(listeners.discoveryListener)
+        } catch (e: IllegalArgumentException) {
+            Log.i("nsdManager", "discoveryListener not registered")
+        }
+    }
+    fun stopHosting() {
+        // Stop broadcasting service
+        nsdManager.unregisterService(listeners.registrationListener)
+
+        // Remove the clients
+        connectedClients.forEach {
+            it.writer.close()
+            it.socket.close()
+        }
+
+        // Reset Names
+        Names.reset()
+
+        // Disable chat
+        changeBottomBarStateTo(false)
+
+        // Reset Messages
+        canonicalThread.reset()
+
+        // Stop Hosting
+        serverSocket?.close()
+        serverSocket = null
     }
 }

@@ -36,14 +36,6 @@ fun getScreenLayoutConstraints(): ConstraintSet = ConstraintSet {
         height = Dimension.fillToConstraints
     }
 
-    constrain(messageList) {
-        top.linkTo(header.bottom)
-        start.linkTo(parent.start)
-        end.linkTo(parent.end)
-        bottom.linkTo(bottomBar.top)
-        width = Dimension.fillToConstraints
-        height = Dimension.fillToConstraints
-    }
 
     constrain(bottomBar) {
         start.linkTo(parent.start, margin = 15.dp)
@@ -63,5 +55,14 @@ fun getScreenLayoutConstraints(): ConstraintSet = ConstraintSet {
         top.linkTo(bottomBar.top)
         start.linkTo(textField.end, margin = 15.dp)
         bottom.linkTo(bottomBar.bottom)
+    }
+
+    constrain(messageList) {
+        top.linkTo(header.bottom, margin = 15.dp)
+        start.linkTo(parent.start)
+        end.linkTo(parent.end)
+        bottom.linkTo(bottomBar.top)
+        width = Dimension.fillToConstraints
+        height = Dimension.fillToConstraints
     }
 }

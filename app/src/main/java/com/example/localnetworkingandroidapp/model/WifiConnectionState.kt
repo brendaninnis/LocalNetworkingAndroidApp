@@ -13,15 +13,14 @@ import java.net.Socket
 
 object WifiConnectionState {
     var socket: Socket? = null
-    var serverSocket: ServerSocket? = null
-    fun isHosting(): Boolean = serverSocket?.let { true } ?: false
+//    var serverSocket: ServerSocket? = null
+//    fun isHosting(): Boolean = serverSocket?.let { true } ?: false
     var connectedClients: MutableList<Client> = mutableListOf()
     lateinit var nsdManager: NsdManager
     var connected = false
     var writer: PrintWriter? = null
-    val names = Names()
     var channelToServer: ChannelService? = null
-    val channelToClient: ChannelService? = null
+//    var channelToClient: MutableList<ChannelService> = mutableListOf()
 
     fun init(context: Context) {
         nsdManager = context.getSystemService(Context.NSD_SERVICE) as NsdManager
@@ -40,12 +39,12 @@ object WifiConnectionState {
         changeBottomBarStateTo(false)
     }
     fun notConnected(): Boolean = !connected
-    fun cleanServerSocket() {
-        serverSocket?.close()
-        serverSocket = null
-    }
-    fun cleanSocket() {
-        socket?.close()
-        socket = null
-    }
+//    fun cleanServerSocket() {
+//        serverSocket?.close()
+//        serverSocket = null
+//    }
+//    fun cleanSocket() {
+//        socket?.close()
+//        socket = null
+//    }
 }

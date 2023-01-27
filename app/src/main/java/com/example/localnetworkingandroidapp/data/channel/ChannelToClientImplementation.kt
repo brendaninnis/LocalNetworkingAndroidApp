@@ -3,6 +3,8 @@ package com.example.localnetworkingandroidapp.data.channel
 import android.util.Log
 import com.example.localnetworkingandroidapp.data.Client
 import com.example.localnetworkingandroidapp.data.Message
+import com.example.localnetworkingandroidapp.model.CanonicalThread
+import com.example.localnetworkingandroidapp.model.SendMessage
 import com.example.localnetworkingandroidapp.model.WifiConnectionState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -10,11 +12,16 @@ import java.io.BufferedReader
 import java.io.IOException
 import java.io.InputStreamReader
 
-internal class ChannelToClientImplementation(val client: Client): ChannelService {
+internal class ChannelToClientImplementation(
+    val client: Client,
+    private val clientList: List<Client>,
+    val canonicalThread: CanonicalThread,
+): ChannelService {
     private var isOpen = false
+    val TAG = "ChannelToClient"
 
-    private suspend fun read() = withContext(Dispatchers.IO) {
-        val TAG = "ClientReader"
+    private suspend fun toClient() = withContext(Dispatchers.IO) {
+        Log.e(TAG, "toClient ${client.name} ")
         var line: String?
         val reader: BufferedReader
 
@@ -26,7 +33,7 @@ internal class ChannelToClientImplementation(val client: Client): ChannelService
             return@withContext
         }
 
-        while (isOpen) {
+        while (isClientConnected()) {
             try {
                 line = reader.readLine()
 
@@ -38,27 +45,25 @@ internal class ChannelToClientImplementation(val client: Client): ChannelService
                 Log.d(TAG, "Read line $line")
 
                 val message = Message.fromJson(line)
-
-                WifiConnectionState.connectedClients.forEach {
-                    if (it != client) { // Don't send the message to the client who sent it
-                        it.writer.print(line)
-                        it.writer.flush()
-                    }
-                }
+                canonicalThread.addMessage(message)
+                SendMessage(message, canonicalThread).toAllClients(exception = client)
             } catch (e: IOException) {
                 WifiConnectionState.removeClient(client)
                 return@withContext
             }
         }
+        Log.e(TAG, "toClient ${client.name} end")
     }
 
     override suspend fun open() {
+        Log.e(TAG, "open")
         withContext(Dispatchers.IO) {
             isOpen = true
-            read()
+            toClient()
         }
     }
 
     override suspend fun close() {
     }
+    private fun isClientConnected(): Boolean = clientList.contains(client)
 }

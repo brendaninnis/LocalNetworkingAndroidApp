@@ -4,6 +4,9 @@ import android.net.nsd.NsdManager
 import android.net.nsd.NsdServiceInfo
 import android.util.Log
 import com.example.localnetworkingandroidapp.data.channel.ChannelService
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.connected
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.socket
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.writer
 import java.io.IOException
 import java.io.PrintWriter
 import java.net.Socket
@@ -22,23 +25,20 @@ class Listeners() {
         override fun onServiceResolved(serviceInfo: NsdServiceInfo) {
             Log.i(TAG, "Resolve Succeeded. $serviceInfo")
 
-            WifiConnectionState.socket?.let {
+            socket?.let {
                 Log.i(TAG, "Socket already connected $it")
                 return
             }
 
             try {
                 // Connect to the host
-                WifiConnectionState.socket = Socket(serviceInfo.host, serviceInfo.port)
-                WifiConnectionState.writer = PrintWriter(WifiConnectionState.socket!!.getOutputStream())
-                WifiConnectionState.connected = true
+                socket = Socket(serviceInfo.host, serviceInfo.port)
+                writer = PrintWriter(WifiConnectionState.socket!!.getOutputStream())
+                connected = true
 
                 // Start reading messages
-                WifiConnectionState.channelToServer = ChannelService.createChannelToServer(WifiConnectionState.socket!!)
-//                WifiConnectionState.channelToClient.open()
-//                Thread(ServerReader(WifiConnectionState.socket!!)).start()
-                WifiConnectionState.connected = true
-                Log.w(TAG, "Start reading message from Server")
+                Log.w(TAG, "Start reading messages")
+//                WifiConnectionState.channelToServer = ChannelService.createChannelToServer(WifiConnectionState.socket!!)
                 WifiConnectionState.changeBottomBarStateTo(true)
             } catch (e: UnknownHostException) {
                 Log.e(TAG, "Unknown host. ${e.localizedMessage}")
@@ -47,8 +47,10 @@ class Listeners() {
             }
         }
     }
-//    val discoveryListener = object : NsdManager.DiscoveryListener {
-    fun getDiscoveryListener() = object : NsdManager.DiscoveryListener {
+
+    var discoveryListener = getADiscoveryListener()
+
+    fun getADiscoveryListener(): NsdManager.DiscoveryListener = object : NsdManager.DiscoveryListener {
 
         val TAG = "discoveryListener"
 

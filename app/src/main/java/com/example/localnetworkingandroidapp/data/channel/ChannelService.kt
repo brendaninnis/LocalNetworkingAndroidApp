@@ -1,6 +1,7 @@
 package com.example.localnetworkingandroidapp.data.channel
 
 import com.example.localnetworkingandroidapp.data.Client
+import com.example.localnetworkingandroidapp.model.CanonicalThread
 import java.net.Socket
 
 interface ChannelService {
@@ -8,11 +9,11 @@ interface ChannelService {
     suspend fun close()
 
     companion object {
-        fun createChannelToServer(socket: Socket): ChannelService {
-            return ChannelToServerImplementation(socket)
+        fun createChannelToServer(socket: Socket, canonicalThread: CanonicalThread): ChannelService {
+            return ChannelToServerImplementation(socket, canonicalThread)
         }
-        fun createChannelToClient(client: Client): ChannelService {
-            return ChannelToClientImplementation(client)
+        fun createChannelToClient(client: Client, clientList: MutableList<Client>, canonicalThread: CanonicalThread): ChannelService {
+            return ChannelToClientImplementation(client, clientList, canonicalThread)
         }
     }
 }
