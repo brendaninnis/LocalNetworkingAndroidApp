@@ -1,0 +1,43 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.mobilegame.localnetworkingandroidapp-mergeDebugResources-33:/values-mk/values-mk.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\2157ea49cdc3c5b2f06f3fe4a50dab4f\\transformed\\core-1.7.0\\res\\values-mk\\values-mk.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "14",
+                        "startColumns": "4",
+                        "startOffsets": "1156",
+                        "endColumns": "100",
+                        "endOffsets": "1252"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\valen\\.gradle\\caches\\transforms-3\\8d5d3970b916db844f7971374d92a7dd\\transformed\\ui-1.1.1\\res\\values-mk\\values-mk.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,209,299,395,498,583,660,767,859,943,1014,1084,1156,1227",
+                        "endColumns": "103,89,95,102,84,76,106,91,83,70,69,71,70,120",
+                        "endOffsets": "204,294,390,493,578,655,762,854,938,1009,1079,1151,1222,1343"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,15,16",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "105,209,299,395,498,583,660,767,859,943,1014,1084,1257,1328",
+                        "endColumns": "103,89,95,102,84,76,106,91,83,70,69,71,70,120",
+                        "endOffsets": "204,294,390,493,578,655,762,854,938,1009,1079,1151,1323,1444"
+                    }
+                }
+            ]
+        }
+    ]
+}
