@@ -1,6 +1,7 @@
 package com.example.localnetworkingandroidapp.data.channel
 
 import android.util.Log
+import com.example.localnetworkingandroidapp.data.LinkStates
 import com.example.localnetworkingandroidapp.data.Message
 import com.example.localnetworkingandroidapp.model.CanonicalThread
 import com.example.localnetworkingandroidapp.model.Names
@@ -20,7 +21,6 @@ internal class ChannelToServerImplementation(
     val TAG = "ChannelToServer"
 
     private suspend fun read() = withContext(Dispatchers.IO) {
-        Log.e(TAG, "read")
         var line: String?
         val reader: BufferedReader
 
@@ -28,8 +28,7 @@ internal class ChannelToServerImplementation(
             reader = BufferedReader(InputStreamReader(socket.getInputStream()))
         } catch (e: IOException) {
             println("in or out failed")
-
-            WifiConnectionState.serverDisconnection()
+            close()
             return@withContext
         }
 
@@ -38,8 +37,7 @@ internal class ChannelToServerImplementation(
                 line = reader.readLine()
 
                 if (line == null) {
-                    isOpen = false
-                    WifiConnectionState.serverDisconnection()
+                    close()
                     break
                 }
 
@@ -54,21 +52,25 @@ internal class ChannelToServerImplementation(
 
                 canonicalThread.addMessage(message)
             } catch (e: IOException) {
-                WifiConnectionState.serverDisconnection()
+                close()
                 return@withContext
             }
         }
     }
 
     override suspend fun open() {
-        Log.e(TAG, "open")
         withContext(Dispatchers.IO) {
             isOpen = true
             read()
         }
     }
 
-    override suspend fun close() {
+    override suspend fun close() = withContext(Dispatchers.IO) {
+        WifiConnectionState.socket?.close()
+        WifiConnectionState.socket = null
+        WifiConnectionState.updateLinkStateTo(LinkStates.NotConnected)
+        WifiConnectionState.changeBottomBarStateTo(false)
         isOpen = false
+        canonicalThread.reset()
     }
 }

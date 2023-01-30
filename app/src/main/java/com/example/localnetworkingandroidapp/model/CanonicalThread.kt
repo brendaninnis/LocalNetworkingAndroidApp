@@ -1,10 +1,11 @@
 package com.example.localnetworkingandroidapp.model
 
-import android.util.Log
+import com.example.localnetworkingandroidapp.data.Client
 import com.example.localnetworkingandroidapp.data.Message
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import java.util.*
 
 class CanonicalThread {
     private val TAG = "CanonicalThread"
@@ -12,11 +13,15 @@ class CanonicalThread {
     val messageList: StateFlow<List<Message>> = _messageList.asStateFlow()
 
     fun addMessage(newMessage: Message) {
-        Log.v(TAG, "add message from : ${newMessage.sender}, text: ${newMessage.text}, date: ${newMessage.timestamp}")
-        //creating a new list to force screen ui recomposition
+        //creating a new list to trigger screen ui recomposition
         val newList = _messageList.value.toMutableList()
         newList.add(newMessage)
         _messageList.value = newList
+    }
+
+    fun addLeaverMessage(missingClient: Client) {
+        val leftMessage = Message(Message.SERVER_MSG_SENDER, "${missingClient.name} has left", Date().time)
+        addMessage(leftMessage)
     }
 
     fun reset() {

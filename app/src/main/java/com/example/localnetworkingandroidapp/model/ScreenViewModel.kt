@@ -3,10 +3,11 @@ package com.example.localnetworkingandroidapp.model
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.localnetworkingandroidapp.data.LinkStates
 import com.example.localnetworkingandroidapp.data.Message
-import com.example.localnetworkingandroidapp.model.WifiConnectionState.connected
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.linkState
 import com.example.localnetworkingandroidapp.model.WifiConnectionState.socket
-import com.example.localnetworkingandroidapp.ui.screen.ConnectionButtonState
+import com.example.localnetworkingandroidapp.model.WifiConnectionState.updateLinkStateTo
 import com.example.localnetworkingandroidapp.ui.screen.getScreenLayoutConstraints
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,57 +19,43 @@ import java.util.*
 class ScreenViewModel() : ViewModel() {
     private val TAG = "ScreenVM"
     val constraints = getScreenLayoutConstraints()
-    val listeners = Listeners()
     val canonicalThread = CanonicalThread()
-    val connectionVM = ConnectionViewModel(listeners, canonicalThread)
+    private val connectionVM = ConnectionViewModel(canonicalThread)
 
+    var textFieldTouched = false
     private val _textInput = MutableStateFlow("Say Something...")
     val textInput: StateFlow<String> = _textInput.asStateFlow()
-    fun handleKeyboardInput(str: String) {
-        _textInput.value += str
+    fun resetKeyboardInput(){
+        _textInput.value = ""
     }
-
-    private val _connectionButton = MutableStateFlow(ConnectionButtonState.Join.string)
-    val connectionButton: StateFlow<String> = _connectionButton.asStateFlow()
-    fun connectionButtonSwitchText() {
-        when (_connectionButton.value) {
-            ConnectionButtonState.Leave.string -> _connectionButton.value =
-                ConnectionButtonState.Join.string
-            ConnectionButtonState.Join.string -> _connectionButton.value =
-                ConnectionButtonState.Leave.string
-        }
+    fun handleKeyboardInput(input: String) {
+        _textInput.value = input.trim()
     }
 
     fun connectionButtonClick() {
-        Log.e(TAG, "click on connection button")
-        if (connected) {
-            if (connectionVM.isHosting())
-                connectionVM.stopHosting()
-            else {
-                connectionVM.stopSearching()
-                socket?.close()
-                socket = null
+        when (linkState.value) {
+            LinkStates.Connected -> {
+                if (connectionVM.isHosting())
+                    connectionVM.stopHosting()
+                else {
+                    connectionVM.stopSearching()
+                    socket?.close()
+                    socket = null
+                    canonicalThread.reset()
+                }
+                updateLinkStateTo(LinkStates.NotConnected)
             }
-        } else {
-            connectionVM.start()
+            LinkStates.NotConnected -> {
+                connectionVM.start()
+            }
+            LinkStates.Connecting -> Log.e(TAG, "ERROR linkState.value == LinkStates.Connecting")
         }
-
-        connectionButtonSwitchText()
-
-//        if (isHosting() || connected) {
-//            Log.i( TAG, "is Hosting ${isHosting()} connected $connected" )
-//            Log.i(TAG, "stop discovery")
-//            connectionVM.stopSearching()
-//            WifiConnectionState.cleanServerSocket()
-//            WifiConnectionState.cleanSocket()
-//        } else
-//            connectionVM.start()
     }
 
     fun handleSendButtonClick() {
-        Log.e(TAG, "click on send button")
         viewModelScope.launch(Dispatchers.IO) {
-            val message = Message(Names.deviceName, "first Message", Date().time)
+            val message = Message(Names.deviceName, textInput.value, Date().time)
+            resetKeyboardInput()
             Log.i(TAG, "send from ${message.sender} : ${message.text}")
             if (connectionVM.isHosting()) {
                 SendMessage(message, canonicalThread).toAllClients()

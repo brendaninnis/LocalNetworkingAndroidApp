@@ -12,8 +12,8 @@ interface ChannelService {
         fun createChannelToServer(socket: Socket, canonicalThread: CanonicalThread): ChannelService {
             return ChannelToServerImplementation(socket, canonicalThread)
         }
-        fun createChannelToClient(client: Client, clientList: MutableList<Client>, canonicalThread: CanonicalThread): ChannelService {
-            return ChannelToClientImplementation(client, clientList, canonicalThread)
+        fun createChannelToClient(client: Client, canonicalThread: CanonicalThread): ChannelService {
+            return ChannelToClientsImplementation(client, canonicalThread)
         }
     }
 }

@@ -3,8 +3,7 @@ package com.example.localnetworkingandroidapp.model
 import android.net.nsd.NsdManager
 import android.net.nsd.NsdServiceInfo
 import android.util.Log
-import com.example.localnetworkingandroidapp.data.channel.ChannelService
-import com.example.localnetworkingandroidapp.model.WifiConnectionState.connected
+import com.example.localnetworkingandroidapp.data.LinkStates
 import com.example.localnetworkingandroidapp.model.WifiConnectionState.socket
 import com.example.localnetworkingandroidapp.model.WifiConnectionState.writer
 import java.io.IOException
@@ -12,7 +11,7 @@ import java.io.PrintWriter
 import java.net.Socket
 import java.net.UnknownHostException
 
-class Listeners() {
+class Listeners(connectionVM: ConnectionViewModel) {
     fun getResolveListener(): NsdManager.ResolveListener = object : NsdManager.ResolveListener {
 
         val TAG = "resolveListener"
@@ -33,12 +32,9 @@ class Listeners() {
             try {
                 // Connect to the host
                 socket = Socket(serviceInfo.host, serviceInfo.port)
-                writer = PrintWriter(WifiConnectionState.socket!!.getOutputStream())
-                connected = true
+                writer = PrintWriter(socket!!.getOutputStream())
+                WifiConnectionState.updateLinkStateTo(LinkStates.Connected)
 
-                // Start reading messages
-                Log.w(TAG, "Start reading messages")
-//                WifiConnectionState.channelToServer = ChannelService.createChannelToServer(WifiConnectionState.socket!!)
                 WifiConnectionState.changeBottomBarStateTo(true)
             } catch (e: UnknownHostException) {
                 Log.e(TAG, "Unknown host. ${e.localizedMessage}")
@@ -50,7 +46,7 @@ class Listeners() {
 
     var discoveryListener = getADiscoveryListener()
 
-    fun getADiscoveryListener(): NsdManager.DiscoveryListener = object : NsdManager.DiscoveryListener {
+    private fun getADiscoveryListener(): NsdManager.DiscoveryListener = object : NsdManager.DiscoveryListener {
 
         val TAG = "discoveryListener"
 
@@ -61,11 +57,11 @@ class Listeners() {
 
         override fun onServiceFound(service: NsdServiceInfo) {
             Log.d(TAG, "Service found ${service.serviceName}")
-//            hostAfterHandler?.removeCallbacksAndMessages(null)
 
             // A service was found! Do something with it.
-            if (service.serviceName.contains("BelgariadChat")) {
+            if (service.serviceName == Names.NetworkSearchDiscoveryName) {
                 WifiConnectionState.nsdManager.resolveService(service, getResolveListener())
+//                WifiConnectionState.nsdManager.resolveService(service, mResolveListener)
             }
         }
 
@@ -95,7 +91,10 @@ class Listeners() {
             // Save the service name. Android may have changed it in order to
             // resolve a conflict, so update the name you initially requested
             // with the name Android actually used.
-            Log.d("NsdManager.Registration", "Service registered")
+            Log.d("NsdManager.Registration", "Service registered as \"${NsdServiceInfo.serviceName}\"")
+            if (NsdServiceInfo.serviceName != Names.NetworkSearchDiscoveryName) {
+                connectionVM.restart()
+            }
         }
 
         override fun onRegistrationFailed(serviceInfo: NsdServiceInfo, errorCode: Int) {

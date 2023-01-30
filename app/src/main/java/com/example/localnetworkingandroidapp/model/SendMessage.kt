@@ -7,7 +7,7 @@ import com.example.localnetworkingandroidapp.model.WifiConnectionState.socket
 import com.example.localnetworkingandroidapp.model.WifiConnectionState.writer
 import java.io.PrintWriter
 
-class SendMessage(private val message: Message, private val canonicalThread: CanonicalThread) {
+class SendMessage(private val message: Message, private val canonicalThread: CanonicalThread = CanonicalThread()) {
     fun toAllClients(exception: Client? = null) {
         connectedClients.forEach { _client ->
             exception?.let { _exception ->
@@ -22,10 +22,12 @@ class SendMessage(private val message: Message, private val canonicalThread: Can
 
     fun toServer() {
         socket?.let {
-            writer?.print(message.toJson() + Message.MESSAGE_TERMINATOR)
-            writer?.flush()
-            canonicalThread.addMessage(message)
+            writer?.let { _writer -> send(_writer) }
         }
+    }
+
+    fun toClient(client: Client) {
+        send(client.writer)
     }
 
     private fun send(printWriter: PrintWriter) {

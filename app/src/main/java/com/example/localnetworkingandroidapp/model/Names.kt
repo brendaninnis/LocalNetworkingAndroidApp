@@ -20,13 +20,17 @@ object Names {
     )
     var availableNames: MutableList<String> = originalListNames.toMutableList()
     var deviceName: String = ""
+
     fun getNewName(): String {
         val newName = availableNames.random()
         availableNames.remove(newName)
         return newName
     }
+
     fun reset() {
         deviceName = ""
         availableNames = originalListNames.toMutableList()
     }
+
+    const val NetworkSearchDiscoveryName = "BelgariadChat"
 }

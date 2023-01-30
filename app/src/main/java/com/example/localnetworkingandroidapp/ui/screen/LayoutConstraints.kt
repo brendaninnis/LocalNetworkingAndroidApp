@@ -1,6 +1,5 @@
 package com.example.localnetworkingandroidapp.ui.screen
 
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintSet
 import androidx.constraintlayout.compose.Dimension
@@ -47,14 +46,16 @@ fun getScreenLayoutConstraints(): ConstraintSet = ConstraintSet {
     constrain(textField) {
         top.linkTo(bottomBar.top)
         start.linkTo(bottomBar.start)
+        end.linkTo(sendButton.start, margin = 15.dp)
         bottom.linkTo(bottomBar.bottom)
-        width = Dimension.wrapContent
+        width = Dimension.fillToConstraints
         height = Dimension.wrapContent
     }
     constrain(sendButton) {
         top.linkTo(bottomBar.top)
-        start.linkTo(textField.end, margin = 15.dp)
+        end.linkTo(bottomBar.end, margin = 30.dp)
         bottom.linkTo(bottomBar.bottom)
+        width = Dimension.wrapContent
     }
 
     constrain(messageList) {

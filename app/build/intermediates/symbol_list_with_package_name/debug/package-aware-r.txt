@@ -21,6 +21,7 @@ color androidx_core_secondary_text_default_material_light
 color black
 color notification_action_color_filter
 color notification_icon_bg_color
+color prussianBlue
 color purple_200
 color purple_500
 color purple_700
